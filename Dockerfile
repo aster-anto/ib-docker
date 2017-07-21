@@ -14,10 +14,10 @@ RUN add-apt-repository -y ppa:webupd8team/java \
 
 # installs to /root irregardless of WORKDIR settings
 RUN wget https://download2.interactivebrokers.com/installers/tws/latest-standalone/tws-latest-standalone-linux-x64.sh -O tws-stable-standalone-linux-x64.sh
-RUN chmod +x tws-stable-standalone-linux-x64.sh 
+RUN chmod +x tws-stable-standalone-linux-x64.sh
 RUN ./tws-stable-standalone-linux-x64.sh -q
 
-RUN mkdir -p /opt/IBController && wget https://github.com/ib-controller/ib-controller/releases/download/3.2.0/IBController-3.2.0.zip && unzip IBController-3.2.0.zip -d /opt/IBController && chmod -R +x /opt/IBController/*.sh && chmod -R +x /opt/IBController/Scripts/*.sh && rm IBController-3.2.0.zip
+RUN mkdir -p /opt/IBController && wget https://github.com/ib-controller/ib-controller/releases/download/3.4.0/IBController-3.4.0.zip && unzip IBController-3.4.0.zip -d /opt/IBController && chmod -R +x /opt/IBController/*.sh && chmod -R +x /opt/IBController/Scripts/*.sh && rm IBController-3.2.0.zip
 
 COPY bin/IBControllerStart.sh /opt/IBController/IBControllerStart.sh
 
