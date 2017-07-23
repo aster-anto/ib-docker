@@ -1,9 +1,9 @@
 FROM ubuntu:16.04
-MAINTAINER Douglas Tan <bianster@gmail.com>
+MAINTAINER aster
 
 # install xvfb and other X dependencies for IB
 RUN apt-get update -y \
-    && apt-get install -y xvfb libxrender1 libxtst6 x11vnc socat unzip software-properties-common unzip supervisor \
+    && apt-get install -y xvfb libxrender1 libxtst6 libgtk2.0-bin libxslt1.1 x11vnc socat unzip software-properties-common unzip supervisor \
     && rm -rf /var/lib/apt/lists/* \
     && apt-get clean
 
@@ -29,7 +29,7 @@ RUN mkdir -p /var/log/ib && mkdir -p /root/conf && mkdir -p /root/IBController &
 COPY conf/supervisord.conf /root/conf/supervisord.conf
 COPY conf/IBController.ini /root/conf/IBController.ini
 
-ENV DISPLAY=":0" VNC_PASSWORD="1234" TWS_MAJOR_VERSION="962" TWS_CONF_DIR="" TWS_SYNC_CONF=""
+ENV DISPLAY=":0" VNC_PASSWORD="1234" TWS_MAJOR_VERSION="966" TWS_CONF_DIR="/root/" TWS_SYNC_CONF="/root/"
 
 EXPOSE 5900 4001
 VOLUME /root/conf /var/log/ib /root/IBController/Logs /tmp/tws
